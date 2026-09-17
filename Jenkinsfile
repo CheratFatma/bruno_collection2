@@ -72,8 +72,7 @@ pipeline {
                                 sh '''
                                     echo "Exécution des tests Bruno..."
 
-                                    bru run ./collections/collection1 \
-                                        --env-file ./collections/collection1/environments/preprod.yml
+                                    bru run --env-file ./environments/preprod.yml
                                 '''
                             }
                         }
