@@ -58,7 +58,7 @@ pipeline {
                             if (params.ALLURE) {
 
                                 sh '''
-                                    bru run ./collections/collection1 --env-file ./collections/collection1/environments/preprod.yml --reporter-json results.json --reporter-junit results.xml
+                                    bru run --env-file ./environments/preprod.yml --reporter-json results.json --reporter-junit results.xml
                                 '''
 
                                 stash(
