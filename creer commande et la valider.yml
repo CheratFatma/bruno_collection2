@@ -1,0 +1,32 @@
+info:
+  name: "creer commande et la valider "
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{url}}/public/orders"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("check status",()=>{
+          expect("en_attente").equals(res.getBody().order.status);
+        })
+
+        test("check nombre item egal 2",()=>{
+          expect(2).equals(res.getBody().order.items.length)
+        })
+
+        bru.setCollectionVar("id_commande", res.getBody().order.id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

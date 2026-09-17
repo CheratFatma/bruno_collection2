@@ -1,0 +1,37 @@
+info:
+  name: ajouter produit 2 au panier
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url}}/public/cart"
+  body:
+    type: json
+    data: |-
+      {
+        "product_id": "{{id_product2}}",
+        "quantity": "{{qte}}"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("check code 201",()=>{
+          expect(res.getStatus()).equals(201);
+        })
+
+        test("verifier message",()=>{
+          expect(res.getBody().message).equals("Produit ajouté au panier.");
+        })
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

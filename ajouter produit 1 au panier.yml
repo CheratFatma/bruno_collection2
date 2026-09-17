@@ -1,0 +1,46 @@
+info:
+  name: ajouter produit 1 au panier
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{url}}/public/cart"
+  body:
+    type: json
+    data: |-
+      {
+        "product_id": "{{id_product1}}",
+        "quantity": "{{qte}}"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+runtime:
+  scripts:
+    - type: before-request
+      code: |-
+        const stock1 = bru.getCollectionVar("stock_product1");
+        const stock2 = bru.getCollectionVar("stock_product2");
+
+        const stockMin = Math.min(stock1, stock2);
+        const qte = Math.floor(Math.random() * stockMin) + 1;
+
+        bru.setCollectionVar("qte", qte);
+    - type: after-response
+      code: |-
+        test("check code 201",()=>{
+          expect(res.getStatus()).equals(201);
+        })
+
+        test("verifier message",()=>{
+          expect(res.getBody().message).equals("Produit ajouté au panier.");
+        })
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

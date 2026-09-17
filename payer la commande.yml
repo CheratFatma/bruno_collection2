@@ -1,0 +1,30 @@
+info:
+  name: payer la commande
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{url}}/public/orders/{{id_commande}}/pay"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("verifier statut payée",()=>{
+          expect("payee").equals(res.getBody().order_status)
+        })
+
+        test("check code 200",()=>{
+          expect(res.getStatus()).equals(200);
+        })
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

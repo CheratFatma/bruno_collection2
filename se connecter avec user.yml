@@ -1,0 +1,41 @@
+info:
+  name: se connecter avec user
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/public/login"
+  body:
+    type: json
+    data: |-
+      {
+        "email": "{{email}}",
+        "password": "{{password}}"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: before-request
+      code: |-
+        let email = bru.getCollectionVar("email");
+        let password = bru.getCollectionVar("password");
+    - type: after-response
+      code: |-
+        test("check infos",()=>{
+          let body_res = res.getBody();
+          expect(body_res).to.have.property("token",body_res.token);
+          bru.setCollectionVar("token",body_res.token);
+        })
+
+        test("check code 200",()=>{
+          expect(res.getStatus()).equals(200);
+        })
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

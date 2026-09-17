@@ -1,0 +1,58 @@
+opencollection: 1.0.0
+
+info:
+  name: collections2
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ""
+      port: ""
+      auth:
+        username: ""
+        password: ""
+      bypassProxy: ""
+
+request:
+  variables:
+    - name: email
+      value: Marion28@yahoo.com
+    - name: password
+      value: QwRvi09IO6cxSvh
+    - name: id
+      value:
+        type: number
+        data: "2217"
+    - name: token
+      value: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLWFwaSIsInN1YiI6MjIxNywicm9sZSI6InVzZXIiLCJpYXQiOjE3ODk2MzczMTcsImV4cCI6MTc4OTY0MDkxNywianRpIjoiZmFjY2M0YjlhYjBjMDc2OGE5MGY5NjM1YmY0OWU5OTcifQ.MS3QMlccUa-UoDxsU6vBCRn3__T2TAJV07s90C5bxT8
+    - name: id_product1
+      value:
+        type: number
+        data: "336"
+    - name: id_product2
+      value:
+        type: number
+        data: "554"
+    - name: stock_product1
+      value:
+        type: number
+        data: "337"
+    - name: stock_product2
+      value:
+        type: number
+        data: "30"
+    - name: qte
+      value:
+        type: number
+        data: "25"
+    - name: id_commande
+      value:
+        type: number
+        data: "310"
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git

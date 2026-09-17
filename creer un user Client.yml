@@ -1,0 +1,53 @@
+info:
+  name: creer un user Client
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url}}/public/register"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "{{$randomNamePrefix}}",
+        "email": "{{email}}",
+        "password": "{{password}}",
+        "role": "user"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: before-request
+      code: |-
+        const email = bru.interpolate("{{$randomEmail}}");
+        const password = bru.interpolate("{{$randomPassword}}");
+
+        bru.setCollectionVar("email", email);
+        bru.setCollectionVar("password", password);
+    - type: after-response
+      code: |-
+        test("check infos",()=>{
+          let body_req = req.getBody();
+          let body_res = res.getBody();
+          
+          expect(body_req.name).equals(body_res.user.name);
+          expect(body_req.email).equals(body_res.user.email);
+          expect(body_req.role).equals(body_res.user.role);
+          
+          expect(res.body.user).to.have.property("id");
+          
+          bru.setCollectionVar("id", body_res.user.id)
+        })
+
+        test("check code 201",()=>{
+          expect(res.getStatus()).equals(201);
+        })
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

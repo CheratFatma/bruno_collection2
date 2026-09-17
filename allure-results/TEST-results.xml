@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="creer un user Client" file="creer un user Client.yml" errors="0" failures="0" skipped="0" tests="2" timestamp="2026-09-17T09:28:40.704" hostname="DESKTOP-L2NL3VE" time="0.718">
+    <testcase name="check infos" status="pass" classname="creer un user Client" time="0.359"/>
+    <testcase name="check code 201" status="pass" classname="creer un user Client" time="0.359"/>
+  </testsuite>
+  <testsuite name="se connecter avec user" file="se connecter avec user.yml" errors="0" failures="0" skipped="0" tests="2" timestamp="2026-09-17T09:28:40.709" hostname="DESKTOP-L2NL3VE" time="0.649">
+    <testcase name="check infos" status="pass" classname="se connecter avec user" time="0.325"/>
+    <testcase name="check code 200" status="pass" classname="se connecter avec user" time="0.325"/>
+  </testsuite>
+  <testsuite name="selectionner deux produits random" file="selectionner deux produits random.yml" errors="0" failures="0" skipped="0" tests="2" timestamp="2026-09-17T09:28:40.709" hostname="DESKTOP-L2NL3VE" time="0.431">
+    <testcase name="check code 200" status="pass" classname="selectionner deux produits random" time="0.216"/>
+    <testcase name="sélectionner deux produits random" status="pass" classname="selectionner deux produits random" time="0.216"/>
+  </testsuite>
+  <testsuite name="ajouter produit 1 au panier" file="ajouter produit 1 au panier.yml" errors="0" failures="0" skipped="0" tests="2" timestamp="2026-09-17T09:28:40.709" hostname="DESKTOP-L2NL3VE" time="0.462">
+    <testcase name="check code 201" status="pass" classname="ajouter produit 1 au panier" time="0.231"/>
+    <testcase name="verifier message" status="pass" classname="ajouter produit 1 au panier" time="0.231"/>
+  </testsuite>
+  <testsuite name="ajouter produit 2 au panier" file="ajouter produit 2 au panier.yml" errors="0" failures="0" skipped="0" tests="2" timestamp="2026-09-17T09:28:40.709" hostname="DESKTOP-L2NL3VE" time="0.264">
+    <testcase name="check code 201" status="pass" classname="ajouter produit 2 au panier" time="0.132"/>
+    <testcase name="verifier message" status="pass" classname="ajouter produit 2 au panier" time="0.132"/>
+  </testsuite>
+  <testsuite name="creer commande et la valider " file="creer commande et la valider.yml" errors="0" failures="0" skipped="0" tests="2" timestamp="2026-09-17T09:28:40.709" hostname="DESKTOP-L2NL3VE" time="0.253">
+    <testcase name="check status" status="pass" classname="creer commande et la valider" time="0.126"/>
+    <testcase name="check nombre item egal 2" status="pass" classname="creer commande et la valider" time="0.126"/>
+  </testsuite>
+  <testsuite name="payer la commande" file="payer la commande.yml" errors="0" failures="0" skipped="0" tests="2" timestamp="2026-09-17T09:28:40.710" hostname="DESKTOP-L2NL3VE" time="1.179">
+    <testcase name="verifier statut payée" status="pass" classname="payer la commande" time="0.589"/>
+    <testcase name="check code 200" status="pass" classname="payer la commande" time="0.589"/>
+  </testsuite>
+</testsuites>

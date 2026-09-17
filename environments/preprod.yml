@@ -1,0 +1,5 @@
+name: preprod
+variables:
+  - name: url
+    value: https://api.efi-academy.com/user-api
+    description: ""
